@@ -24,6 +24,10 @@
 $inputPoi = Get-Content $fileInput | ConvertFrom-Csv
 
 function main {
+    #Prepare headers for the output file:
+    "name,code,country,lat,lon,elev,style,rwdir,rwlen,freq,desc" | Out-File -FilePath $fileOutput -Encoding ascii
+
+    #loop through all the input lines and write them to the output after conversion
     ForEach ($poi in $inputPoi) {
         if ($poi.Name.length -lt 6) {
             $poiShort = $poi.Name.Replace(' ','')
@@ -32,7 +36,7 @@ function main {
         }
         $coordinatesInput = ("{0}, {1}" -f $poi.lat, $poi.lon)
         $convertedCoordinates = Coordinates-DecimalToDeg -decimal $coordinatesInput
-        ("`"{0}`",{1},{2},{3},{4},{5}.0m,{6},,,,," -f $poi.Name,$poiShort,$country,$convertedCoordinates[0],$convertedCoordinates[1],$poi.alt,$style) | Out-File -FilePath $fileOutput -Append
+        ("`"{0}`",{1},{2},{3},{4},{5}.0m,{6},,,,," -f $poi.Name,$poiShort,$country,$convertedCoordinates[0],$convertedCoordinates[1],$poi.alt,$style) | Out-File -FilePath $fileOutput -Append -Encoding ascii
     }
 }
 
