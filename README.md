@@ -1,7 +1,6 @@
 # Overview
 
-A simple powershell script that can be used to convert a CSV file with Towns or POIs and their coordinates to a CUP file that can be used by LK8000, XCSoar, and other Navigation software used for flying
-Can be used if you have want to add some Waypoints to your flying navigation, and you have the coordinates already. It will help you construct the .CUP file
+A simple powershell script that can be used to convert a CSV file with Towns or POIs and their coordinates to a SeeYou .CUP file that can be used by LK8000, XCSoar, and other Navigation software used for flying.
 
 ## File input
 The main input is a CSV file with the following columns
